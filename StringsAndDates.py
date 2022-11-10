@@ -3,26 +3,39 @@
 class StringsAndDates():
 
     MonthsMaster = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
+    
+    dateInput = ''
 
-    print('Enter a date:')
-    dateInput = str(input())
+    while dateInput != '-1':
 
-    cutDate = dateInput.split(' ')
+        print('Enter date:')
+        dateInput = str(input())
 
-    if cutDate[1].find(',') == False:
-        errorMessage()
+        cutDate = dateInput.split(' ')
 
-    temp = cutDate[1]
-    cutDate[1] = temp.replace(',','')
-    print(cutDate[1])
+        if 0 < 1 < len(cutDate) and 0 < 2 < len(cutDate):
 
-    validMonth = False
+            if cutDate[1].find(',') == 2:
 
-    for i in range(11):
-        if cutDate[0] == MonthsMaster[i]:
-            validMonth = True
+                temp = cutDate[1]
+                cutDate[1] = temp.replace(',','')
 
-    print(validMonth)
+                validMonth = False
 
-def errorMessage():
-    print('Please input the date exactly as shown: \nMonth Day, Year (Ex. March 31, 2021)')
+                for i in range(12):
+                    if cutDate[0] == MonthsMaster[i]:
+                        validMonth = True
+                        monthNumber = i + 1
+
+                if validMonth == True:
+                
+                    dateFinal = str(monthNumber) + '/' + cutDate[1] + '/' + cutDate[2]
+                    print(dateFinal)
+
+                else:
+                    print('Date entered is not valid')
+            else:
+                print('Date entered is not valid')
+        else:
+            if dateInput != '-1':
+                print('Date entered is not valid')
